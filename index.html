@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps & Cloud Resources</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 50%, #f0f4f8 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Floating DevOps logos background */
+        .floating-logos {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .logo {
+            position: absolute;
+            animation: float 20s infinite ease-in-out;
+            opacity: 0.08;
+        }
+        
+        .logo img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            filter: grayscale(100%);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            color: #000;
+            margin-bottom: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        header h1 img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+        
+        header p {
+            font-size: 1.1em;
+            color: #000;
+        }
+        
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .category {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s, border-left 0.3s;
+            border-left: 5px solid #667eea;
+            position: relative;
+        }
+        
+        .category:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border-left-color: #764ba2;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .category-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+        
+        .category h2 {
+            color: #000;
+            font-size: 1.5em;
+            margin: 0;
+        }
+        
+        .links-list {
+            list-style: none;
+        }
+        
+        .links-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .link-logo {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+        
+        .links-list a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .links-list a:hover {
+            color: #667eea;
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            color: #000;
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        footer p {
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating DevOps Logos Background -->
+    <div class="floating-logos">
+        <div class="logo" style="top: 10%; left: 5%; animation-delay: 0s;">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/docker.svg" alt="Docker">
+        </div>
+        <div class="logo" style="top: 20%; right: 8%; animation-delay: 2s;">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/kubernetes.svg" alt="Kubernetes">
+        </div>
+        <div class="logo" style="top: 40%; left: 10%; animation-delay: 4s;">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/terraform.svg" alt="Terraform">
+        </div>
+        <div class="logo" style="top: 50%; right: 10%; animation-delay: 1s;">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/ansible.svg" alt="Ansible">
+        </div>
+        <div class="logo" style="top: 60%; left: 8%; animation-delay: 3s;">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/prometheus.svg" alt="Prometheus">
+        </div>
+        <div class="logo" style="top: 70%; right: 12%; animation-delay: 5s;">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/jenkins.svg" alt="Jenkins">
+        </div>
+        <div class="logo" style="top: 30%; right: 5%; animation-delay: 4.5s;">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/grafana.svg" alt="Grafana">
+        </div>
+        <div class="logo" style="top: 55%; left: 3%; animation-delay: 1.5s;">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" alt="GitHub">
+        </div>
+        <div class="logo" style="top: 75%; right: 3%; animation-delay: 3.5s;">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gitlab.svg" alt="GitLab">
+        </div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/devdotto.svg" alt="DevOps">
+                DevOps & Cloud Resources
+            </h1>
+            <p>⭐ Essential tools and platforms for cloud infrastructure and DevOps practices ⭐</p>
+        </header>
+        
+        <div class="categories">
+            <!-- Cloud Platforms -->
+            <div class="category">
+                <div class="category-header">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonaws.svg" alt="AWS" class="category-logo">
+                    <h2>Cloud Platforms</h2>
+                </div>
+                <ul class="links-list">
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonaws.svg" alt="AWS" class="link-logo">
+                        <a href="https://aws.amazon.com" target="_blank">Amazon Web Services (AWS)</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlecloud.svg" alt="GCP" class="link-logo">
+                        <a href="https://cloud.google.com" target="_blank">Google Cloud Platform</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/microsoftazure.svg" alt="Azure" class="link-logo">
+                        <a href="https://azure.microsoft.com" target="_blank">Microsoft Azure</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/digitalocean.svg" alt="DigitalOcean" class="link-logo">
+                        <a href="https://www.digitalocean.com" target="_blank">DigitalOcean</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linode.svg" alt="Linode" class="link-logo">
+                        <a href="https://www.linode.com" target="_blank">Linode</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Infrastructure as Code -->
+            <div class="category">
+                <div class="category-header">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/terraform.svg" alt="Terraform" class="category-logo">
+                    <h2>Infrastructure as Code</h2>
+                </div>
+                <ul class="links-list">
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/terraform.svg" alt="Terraform" class="link-logo">
+                        <a href="https://www.terraform.io" target="_blank">Terraform</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/ansible.svg" alt="Ansible" class="link-logo">
+                        <a href="https://www.ansible.com" target="_blank">Ansible</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/puppet.svg" alt="Puppet" class="link-logo">
+                        <a href="https://puppet.com" target="_blank">Puppet</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/chef.svg" alt="Chef" class="link-logo">
+                        <a href="https://www.chef.io" target="_blank">Chef</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazon.svg" alt="CloudFormation" class="link-logo">
+                        <a href="https://aws.amazon.com/cloudformation/" target="_blank">CloudFormation</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Container & Orchestration -->
+            <div class="category">
+                <div class="category-header">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/docker.svg" alt="Docker" class="category-logo">
+                    <h2>Containers & Orchestration</h2>
+                </div>
+                <ul class="links-list">
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/docker.svg" alt="Docker" class="link-logo">
+                        <a href="https://www.docker.com" target="_blank">Docker</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/kubernetes.svg" alt="Kubernetes" class="link-logo">
+                        <a href="https://kubernetes.io" target="_blank">Kubernetes</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/docker.svg" alt="Docker Swarm" class="link-logo">
+                        <a href="https://www.docker.com/products/docker-swarm" target="_blank">Docker Swarm</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/podman.svg" alt="Podman" class="link-logo">
+                        <a href="https://podman.io" target="_blank">Podman</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/rancher.svg" alt="Rancher" class="link-logo">
+                        <a href="https://www.rancher.com" target="_blank">Rancher</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- CI/CD Platforms -->
+            <div class="category">
+                <div class="category-header">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/jenkins.svg" alt="Jenkins" class="category-logo">
+                    <h2>CI/CD Platforms</h2>
+                </div>
+                <ul class="links-list">
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/jenkins.svg" alt="Jenkins" class="link-logo">
+                        <a href="https://www.jenkins.io" target="_blank">Jenkins</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gitlab.svg" alt="GitLab CI/CD" class="link-logo">
+                        <a href="https://about.gitlab.com/features/continuous-integration/" target="_blank">GitLab CI/CD</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" alt="GitHub Actions" class="link-logo">
+                        <a href="https://github.com/features/actions" target="_blank">GitHub Actions</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/atlassian.svg" alt="Bamboo" class="link-logo">
+                        <a href="https://www.atlassian.com/software/bamboo" target="_blank">Bamboo</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/circleci.svg" alt="CircleCI" class="link-logo">
+                        <a href="https://circleci.com" target="_blank">CircleCI</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Monitoring & Logging -->
+            <div class="category">
+                <div class="category-header">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/prometheus.svg" alt="Prometheus" class="category-logo">
+                    <h2>Monitoring & Logging</h2>
+                </div>
+                <ul class="links-list">
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/prometheus.svg" alt="Prometheus" class="link-logo">
+                        <a href="https://prometheus.io" target="_blank">Prometheus</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/grafana.svg" alt="Grafana" class="link-logo">
+                        <a href="https://grafana.com" target="_blank">Grafana</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/elastic.svg" alt="Elastic Stack" class="link-logo">
+                        <a href="https://www.elastic.co" target="_blank">Elastic Stack</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/splunk.svg" alt="Splunk" class="link-logo">
+                        <a href="https://www.splunk.com" target="_blank">Splunk</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/datadog.svg" alt="Datadog" class="link-logo">
+                        <a href="https://www.datadoghq.com" target="_blank">Datadog</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Version Control -->
+            <div class="category">
+                <div class="category-header">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" alt="GitHub" class="category-logo">
+                    <h2>Version Control</h2>
+                </div>
+                <ul class="links-list">
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" alt="GitHub" class="link-logo">
+                        <a href="https://github.com" target="_blank">GitHub</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gitlab.svg" alt="GitLab" class="link-logo">
+                        <a href="https://about.gitlab.com" target="_blank">GitLab</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/bitbucket.svg" alt="Bitbucket" class="link-logo">
+                        <a href="https://bitbucket.org" target="_blank">Bitbucket</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gitea.svg" alt="Gitea" class="link-logo">
+                        <a href="https://gitea.io" target="_blank">Gitea</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gitkraken.svg" alt="GitKraken" class="link-logo">
+                        <a href="https://www.gitkraken.com" target="_blank">GitKraken</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Security & Compliance -->
+            <div class="category">
+                <div class="category-header">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/vault.svg" alt="Vault" class="category-logo">
+                    <h2>Security & Compliance</h2>
+                </div>
+                <ul class="links-list">
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/vault.svg" alt="Vault" class="link-logo">
+                        <a href="https://www.hashicorp.com/products/vault" target="_blank">HashiCorp Vault</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/aqua.svg" alt="Aqua Security" class="link-logo">
+                        <a href="https://www.aquasec.com" target="_blank">Aqua Security</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/paloaltonetworks.svg" alt="Palo Alto" class="link-logo">
+                        <a href="https://www.twistlock.com" target="_blank">Palo Alto Networks</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/snyk.svg" alt="Snyk" class="link-logo">
+                        <a href="https://snyk.io" target="_blank">Snyk</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/owasp.svg" alt="OWASP" class="link-logo">
+                        <a href="https://owasp.org" target="_blank">OWASP</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Configuration Management -->
+            <div class="category">
+                <div class="category-header">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/consul.svg" alt="Consul" class="category-logo">
+                    <h2>Configuration Management</h2>
+                </div>
+                <ul class="links-list">
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/consul.svg" alt="Consul" class="link-logo">
+                        <a href="https://www.consul.io" target="_blank">Consul</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/etcd.svg" alt="etcd" class="link-logo">
+                        <a href="https://etcd.io" target="_blank">etcd</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apache.svg" alt="ZooKeeper" class="link-logo">
+                        <a href="https://www.zookeeper.apache.org" target="_blank">Apache ZooKeeper</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/vault.svg" alt="Vault" class="link-logo">
+                        <a href="https://www.vaultproject.io" target="_blank">Vault</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer>
+            <p>📚 DevOps & Cloud Resources | 🚀 Last updated: 2025 | ⚡ Hosted on AWS | 💪 Built with Terraform</p>
+        </footer>
+    </div>
+</body>
+</html>
